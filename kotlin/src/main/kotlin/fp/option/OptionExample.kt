@@ -1,6 +1,7 @@
 package fp.option
 
 import arrow.core.Option
+import arrow.core.getOrElse
 
 data class Item(val id: Int, val name: String)
 
@@ -17,4 +18,6 @@ class ConcreteFetchItemByIdQuery: FetchItemByIdQuery {
 fun main() {
     val fetchItemByIdQuery = ConcreteFetchItemByIdQuery()
     val optionOfItem: Option<Item> = fetchItemByIdQuery.fetch()
+
+    optionOfItem.getOrElse { "item" }
 }
